@@ -1,0 +1,56 @@
+# 🥫 Dispensa Smart
+
+**Less waste, better recipes.** A Flutter app that brings your pantry, shopping list and recipes from around the world into one place. It works offline, the AI runs on the phone, and it's available in 21 languages.
+
+> 🇮🇹 *Dispensa Smart: dispensa, lista della spesa e ricette da tutto il mondo, con l'AI che gira sul telefono. Funziona offline, in 21 lingue.*
+
+<p align="center">
+  <img src="media/screen1.jpg" width="160" alt="Adding products">
+  <img src="media/screen2.jpg" width="160" alt="Shopping list">
+  <img src="media/screen3.jpg" width="160" alt="Reading a receipt">
+  <img src="media/screen4.jpg" width="160" alt="World cuisines">
+  <img src="media/screen5.jpg" width="160" alt="Recipe imported from social media">
+  <img src="media/screen6.jpg" width="160" alt="Original or translated">
+</p>
+
+<p align="center">▶️ <a href="media/demo.mp4"><b>Watch the 90-second demo</b></a></p>
+
+---
+
+## ✨ Features
+
+- **Pantry & expiry dates**: add products by barcode (Open Food Facts), photo, text or voice. It understands quantities and units, and sends a reminder the day before a product expires.
+- **Receipt reader**: on-device OCR. Each item and its quantity goes straight into the pantry.
+- **Smart shopping list**: works with mixed languages, uses product emojis, can be shared, and tracks your expenses.
+- **Recipes from social media**: share an Instagram, TikTok or YouTube post with the app. It extracts the ingredients and steps, detects the language and the country of the dish, and keeps the video attached.
+- **World & regional cuisines**: hand-drawn landmark scenes for each country. The app imports recipes from each country's reference sites through schema.org data.
+- **Original or translated**: translation happens on the phone (ML Kit). You can switch to the original language with one tap.
+- **Allergens**: covers the 14 EU allergens plus vegetarian and vegan. Recipes are checked against your profile, in multiple languages.
+- **Calories & meal plan**: kcal per serving, a weekly plan checked against a personal goal (Mifflin-St Jeor), and saved menus you can repeat for months.
+- **Shared pantry** between household members (Firebase), a home-screen widget, and backup and restore.
+
+## 🛠 Tech stack
+
+| Area | Technologies |
+|---|---|
+| App | Flutter / Dart, Provider, Material 3, custom-painted illustrations |
+| Storage | SQLite (sqflite) with versioned migrations, offline-first |
+| Cloud | Firebase (Firestore, rules, anonymous auth) for shared pantries |
+| On-device AI | Gemini Nano (Android), Apple Foundation Models (iOS), Gemma via LiteRT (optional) |
+| Vision & language | Google ML Kit: text recognition, language ID, translation; barcode scanning |
+| Platform | Android share intents, iOS Share Extension, home-screen widgets, scheduled notifications |
+| i18n | 21 languages (gen-l10n + an automated DeepL pipeline) |
+
+## 🧠 Engineering highlights
+
+- **Recipe parsing from free text**: social media captions are messy. A heuristic parser recognises section headers ("Per la crema:"), inline lists, quantities in many languages, and the point where the ingredients end and the steps begin.
+- **Calorie estimation without a server**: an offline nutrition table, unit-to-gram conversion across languages and typical piece weights. Each estimate comes with a confidence score.
+- **Privacy by design**: the AI, OCR and translation all run on the device. There are no ads and no tracking.
+
+## 📱 Status
+
+The Android app is in active development. iOS support is in progress. Store release is coming soon.
+
+---
+
+🔒 *The source code is private. It is available on request for recruiters and collaborators.*
