@@ -1,4 +1,6 @@
-# 🥫 Dispensa Smart
+<p align="center"><img src="media/logo.png" width="128" alt="Dispensa Smart logo"></p>
+
+<h1 align="center">Dispensa Smart</h1>
 
 **Less waste, better recipes.** A Flutter app that brings your pantry, shopping list and recipes from around the world into one place. It works offline, the AI runs on the phone, and it's available in 21 languages.
 
@@ -26,7 +28,12 @@
 - **World & regional cuisines**: hand-drawn landmark scenes for each country. The app imports recipes from each country's reference sites through schema.org data.
 - **Original or translated**: translation happens on the phone (ML Kit). You can switch to the original language with one tap.
 - **Allergens**: covers the 14 EU allergens plus vegetarian and vegan. Recipes are checked against your profile, in multiple languages.
-- **Calories & meal plan**: kcal per serving, a weekly plan checked against a personal goal (Mifflin-St Jeor), and saved menus you can repeat for months.
+- **"Suggest a dish"**: tell it what you fancy, in any language or a mix ("patate, köfte"), pick the countries, and it searches their recipe sites for you. Results appear inside the app, without opening the site. It ranks the dishes by:
+  - the calories left for that meal;
+  - preparation time, with a "quick" filter (≤ 30 min);
+  - your allergies;
+  - what's already in your pantry, with products about to expire first.
+- **Calories & meal plan**: a weekly plan split into breakfast, lunch, snack and dinner. Each day is checked against a personal kcal goal (Mifflin-St Jeor), and menus can be saved and repeated for months.
 - **Shared pantry** between household members (Firebase), a home-screen widget, and backup and restore.
 
 ## 🛠 Tech stack
@@ -44,6 +51,7 @@
 ## 🧠 Engineering highlights
 
 - **Recipe parsing from free text**: social media captions are messy. A heuristic parser recognises section headers ("Per la crema:"), inline lists, quantities in many languages, and the point where the ingredients end and the steps begin.
+- **Cross-language recipe search**: the query is split into food terms and matched against a multilingual food dictionary. Unknown words fall back to on-device translation. One search becomes "patates" on a Turkish site and "potatoes" on an English one.
 - **Calorie estimation without a server**: an offline nutrition table, unit-to-gram conversion across languages and typical piece weights. Each estimate comes with a confidence score.
 - **Privacy by design**: the AI, OCR and translation all run on the device. There are no ads and no tracking.
 
