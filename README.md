@@ -1,10 +1,12 @@
-<p align="center"><img src="media/logo.png" width="128" alt="Dispensa Smart logo"></p>
+<p align="center"><img src="media/logo.png" width="128" alt="Prandify logo"></p>
 
-<h1 align="center">Dispensa Smart</h1>
+<h1 align="center">Prandify</h1>
+
+<p align="center"><a href="https://prandify.com">prandify.com</a></p>
 
 **Less waste, better recipes.** A Flutter app that brings your pantry, shopping list and recipes from around the world into one place. It works offline, the AI runs on the phone, and it's available in 21 languages.
 
-> 🇮🇹 *Dispensa Smart: dispensa, lista della spesa e ricette da tutto il mondo, con l'AI che gira sul telefono. Funziona offline, in 21 lingue.*
+> 🇮🇹 *Prandify (dal latino* prandium, *"pasto"): dispensa, lista della spesa e ricette da tutto il mondo, con l'AI che gira sul telefono. Funziona offline, in 21 lingue.*
 
 <p align="center">
   <img src="media/screen1.jpg" width="160" alt="Adding products">
