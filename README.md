@@ -23,12 +23,12 @@
 
 - **Pantry & expiry dates**: add products by barcode (Open Food Facts), photo, text or voice. It understands quantities and units, and sends a reminder the day before a product expires.
 - **Receipt reader**: on-device OCR. Each item and its quantity goes straight into the pantry.
-- **Smart shopping list**: works with mixed languages, uses product emojis, can be shared, and tracks your expenses.
+- **Smart shopping list**: works with mixed languages, uses product emojis and can be shared. It shows this month's spending from your receipts, and a 🏷️ button on each product opens local supermarket offers (optional, with your city).
 - **Recipes from social media**: share an Instagram, TikTok or YouTube post with the app. It extracts the ingredients and steps, detects the language and the country of the dish, and keeps the video attached.
 - **World & regional cuisines**: hand-drawn landmark scenes for each country. Recipes come from each country's reference sites through schema.org data.
   - You can search a dish or an ingredient in any language, and filter by type or region.
   - Results load as you scroll, page after page of the site's results.
-- **Original or translated**: translation happens on the phone (ML Kit). You can switch to the original language with one tap.
+- **Original or translated**: when the phone has on-device AI, recipes are translated by the AI. The steps stream in as they are written, and translations are cached. Otherwise a basic translation is used, with Google Translate one tap away. You can switch to the original with one tap, and copy or edit the text.
 - **Allergens**: covers the 14 EU allergens plus vegetarian and vegan. Recipes are checked against your profile, in multiple languages.
 - **"Suggest a dish"**: tell it what you fancy, in any language or a mix ("patate, köfte"), pick the countries, and it searches their recipe sites for you. Results appear inside the app, without opening the site. It ranks the dishes by:
   - the calories left for that meal;
@@ -36,7 +36,9 @@
   - your allergies;
   - what's already in your pantry, with products about to expire first.
 - **Calories & meal plan**: a weekly plan split into breakfast, lunch, snack and dinner. Each day is checked against a personal kcal goal (Mifflin-St Jeor), and menus can be saved and repeated for months.
+- **Your household**: set how many people you usually cook for, and every recipe and meal plan scales to it.
 - **Shared pantry** between household members (Firebase), a home-screen widget, and backup and restore.
+- **Transparent by design**: privacy, health disclaimers and data credits (Open Food Facts, ODbL) are always readable inside the app.
 
 ## 🛠 Tech stack
 
@@ -44,7 +46,7 @@
 |---|---|
 | App | Flutter / Dart, Provider, Material 3, custom-painted illustrations |
 | Storage | SQLite (sqflite) with versioned migrations, offline-first |
-| Cloud | Firebase (Firestore, rules, anonymous auth) for shared pantries |
+| Cloud | Firebase (Firestore, rules, anonymous auth) for shared pantries; RevenueCat for subscriptions |
 | On-device AI | Gemini Nano (Android), Apple Foundation Models (iOS), Gemma via LiteRT (optional) |
 | Vision & language | Google ML Kit: text recognition, language ID, translation; barcode scanning |
 | Platform | Android share intents, iOS Share Extension, home-screen widgets, scheduled notifications |
@@ -60,7 +62,7 @@
 
 ## 📱 Status
 
-The Android app is in active development. iOS support is in progress. Store release is coming soon.
+The Android app is in active development, and iOS support is in progress. A premium tier (RevenueCat) is being built on top of a generous free version, with no ads. It will include an automatic weekly diet, price history and macros. Store release is coming soon.
 
 ---
 
