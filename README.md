@@ -25,7 +25,9 @@
 - **Receipt reader**: on-device OCR. Each item and its quantity goes straight into the pantry.
 - **Smart shopping list**: works with mixed languages, uses product emojis, can be shared, and tracks your expenses.
 - **Recipes from social media**: share an Instagram, TikTok or YouTube post with the app. It extracts the ingredients and steps, detects the language and the country of the dish, and keeps the video attached.
-- **World & regional cuisines**: hand-drawn landmark scenes for each country. The app imports recipes from each country's reference sites through schema.org data.
+- **World & regional cuisines**: hand-drawn landmark scenes for each country. Recipes come from each country's reference sites through schema.org data.
+  - You can search a dish or an ingredient in any language, and filter by type or region.
+  - Results load as you scroll, page after page of the site's results.
 - **Original or translated**: translation happens on the phone (ML Kit). You can switch to the original language with one tap.
 - **Allergens**: covers the 14 EU allergens plus vegetarian and vegan. Recipes are checked against your profile, in multiple languages.
 - **"Suggest a dish"**: tell it what you fancy, in any language or a mix ("patate, köfte"), pick the countries, and it searches their recipe sites for you. Results appear inside the app, without opening the site. It ranks the dishes by:
@@ -51,6 +53,7 @@
 ## 🧠 Engineering highlights
 
 - **Recipe parsing from free text**: social media captions are messy. A heuristic parser recognises section headers ("Per la crema:"), inline lists, quantities in many languages, and the point where the ingredients end and the steps begin.
+- **Works with sites it has never seen**: it finds each site's search on its own. It tries the OpenSearch description, then the site's search form (also inside a headless WebView for JavaScript-built pages), then the WordPress default. It also detects result pagination (`rel="next"`, numbered page links).
 - **Cross-language recipe search**: the query is split into food terms and matched against a multilingual food dictionary. Unknown words fall back to on-device translation. One search becomes "patates" on a Turkish site and "potatoes" on an English one.
 - **Calorie estimation without a server**: an offline nutrition table, unit-to-gram conversion across languages and typical piece weights. Each estimate comes with a confidence score.
 - **Privacy by design**: the AI, OCR and translation all run on the device. There are no ads and no tracking.
