@@ -9,15 +9,15 @@
 > 🇮🇹 *Prandify (dal latino* prandium, *"pasto"): dispensa, lista della spesa e ricette da tutto il mondo, con l'AI che gira sul telefono. Funziona offline, in 21 lingue.*
 
 <p align="center">
-  <img src="media/screen1.jpg" width="160" alt="Adding products">
-  <img src="media/screen2.jpg" width="160" alt="Shopping list">
-  <img src="media/screen3.jpg" width="160" alt="Reading a receipt">
-  <img src="media/screen4.jpg" width="160" alt="World cuisines">
-  <img src="media/screen5.jpg" width="160" alt="Recipe imported from social media">
-  <img src="media/screen6.jpg" width="160" alt="Original or translated">
+  <img src="media/screen1.jpg" width="160" alt="Pantry with expiry reminders">
+  <img src="media/screen2.jpg" width="160" alt="Voice input with live recognition">
+  <img src="media/screen3.jpg" width="160" alt="World cuisines">
+  <img src="media/screen4.jpg" width="160" alt="Recipe with calories, allergens and macros">
+  <img src="media/screen5.jpg" width="160" alt="Weekly meal plan">
+  <img src="media/screen6.jpg" width="160" alt="Shopping list">
 </p>
 
-<p align="center">▶️ <a href="media/demo.mp4"><b>Watch the 90-second demo</b></a></p>
+<p align="center">▶️ <a href="media/demo.mp4"><b>Watch the 90-second demo</b></a> <i>(earlier version, a new one is coming)</i></p>
 
 ---
 
