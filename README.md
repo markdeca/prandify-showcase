@@ -23,9 +23,10 @@
 
 ## ✨ Features
 
-- **Pantry & expiry dates**: add products by barcode (Open Food Facts), photo, text or voice. It understands quantities and units, and sends a reminder the day before a product expires.
+- **Pantry & expiry dates**: add products by barcode (Open Food Facts), photo, text or voice. It understands quantities and units ("un chilo e mezzo di patate", "a dozen eggs", "iki kilo domates"), splits lists dictated without pauses, and sends a reminder the day before a product expires.
+- **Voice input that shows what it understood**: while you speak, the recognised products appear live with emoji and quantity, so you can fix a mistake before confirming. Long pauses between products are fine.
 - **Receipt reader**: on-device OCR. Each item and its quantity goes straight into the pantry.
-- **Smart shopping list**: works with mixed languages, uses product emojis and can be shared. It shows this month's spending from your receipts, and a 🏷️ button on each product opens local supermarket offers (optional, with your city).
+- **Smart shopping list**: the same product in different languages is one item ("Soğan" + "Cipolla" + "Onion"), and quantities add up across units (2 onions + 200 g → 420 g). It uses product emojis, can be shared, and shows this month's spending from your receipts. Supermarket offers are optional.
 - **Recipes from social media**: share an Instagram, TikTok or YouTube post with the app. It extracts the ingredients and steps, detects the language and the country of the dish, and keeps the video attached.
 - **World & regional cuisines**: hand-drawn landmark scenes for each country. Recipes come from each country's reference sites through schema.org data.
   - You can search a dish or an ingredient in any language, and filter by type or region.
@@ -38,9 +39,14 @@
   - your allergies;
   - what's already in your pantry, with products about to expire first.
 - **Calories & meal plan**: a weekly plan split into breakfast, lunch, snack and dinner. Each day is checked against a personal kcal goal (Mifflin-St Jeor), and menus can be saved and repeated for months.
+- **⭐ Premium**:
+  - **Create my week**: picks typical dishes of the chosen countries (classic lists plus on-device AI ideas), finds each recipe on the country's sites or on the web, and builds a varied week close to the calorie goal. No pasta at dinner, typical breakfasts per country, snacks between meals. Every dish can be swapped from suggestions or saved recipes.
+  - **Macros**: protein, carbs and fat per serving and per day, as a donut chart.
+  - **Price history**: store detected on the receipt, price trend per product, cheapest store, monthly budget with alerts.
 - **Your household**: set how many people you usually cook for, and every recipe and meal plan scales to it.
 - **Shared pantry** between household members (Firebase), a home-screen widget, and backup and restore.
-- **Transparent by design**: privacy, health disclaimers and data credits (Open Food Facts, ODbL) are always readable inside the app.
+- **Works offline**: pantry, plan and shopping list work without a connection, and a slim banner says so clearly.
+- **Transparent by design**: a three-page welcome, privacy, health disclaimers and data credits (Open Food Facts, ODbL) are always readable inside the app.
 
 ## 🛠 Tech stack
 
@@ -51,7 +57,8 @@
 | Cloud | Firebase (Firestore, rules, anonymous auth) for shared pantries; RevenueCat for subscriptions |
 | On-device AI | Gemini Nano (Android), Apple Foundation Models (iOS), Gemma via LiteRT (optional) |
 | Vision & language | Google ML Kit: text recognition, language ID, translation; barcode scanning |
-| Platform | Android share intents, iOS Share Extension, home-screen widgets, scheduled notifications |
+| Platform | Android (target API 36) and iOS, share intents, home-screen widgets, scheduled notifications, Crashlytics |
+| Quality | Unit tests for the text parsers, integration tests that tour the app and probe every recipe site on device |
 | i18n | 21 languages (gen-l10n + an automated DeepL pipeline) |
 
 ## 🧠 Engineering highlights
@@ -60,11 +67,13 @@
 - **Works with sites it has never seen**: it finds each site's search on its own. It tries the OpenSearch description, then the site's search form (also inside a headless WebView for JavaScript-built pages), then the WordPress default. It also detects result pagination (`rel="next"`, numbered page links).
 - **Cross-language recipe search**: the query is split into food terms and matched against a multilingual food dictionary. Unknown words fall back to on-device translation. One search becomes "patates" on a Turkish site and "potatoes" on an English one.
 - **Calorie estimation without a server**: an offline nutrition table, unit-to-gram conversion across languages and typical piece weights. Each estimate comes with a confidence score.
-- **Privacy by design**: the AI, OCR and translation all run on the device. There are no ads and no tracking.
+- **Recipe sites that keep working**: an automated check probes every country's recipe site, plus an on-device test that runs the real search (headless browser included). It caught dead domains and changed search pages, and led to support for legacy encodings such as windows-1251.
+- **Fixing machine translation**: titles sent to the translator in sentence case, ALL-CAPS output normalised, and foreign dish names the translator mangled ("Mentaiko" → "mentako") restored from the original.
+- **Privacy by design**: the AI, OCR and translation run on the device. There are no ads and no tracking.
 
 ## 📱 Status
 
-The Android app is in active development, and iOS support is in progress. A premium tier (RevenueCat) is being built on top of a generous free version, with no ads. It will include an automatic weekly diet, price history and macros. Store release is coming soon.
+The app runs on Android and iOS and is being prepared for Google Play and the App Store. A premium tier (RevenueCat) sits on top of a generous free version, with no ads.
 
 ---
 
